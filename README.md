@@ -1,4 +1,4 @@
-# uistackview-sample
+# swift-uistackview-example
 Sample application developed with UIStackView and Autolayout.
 This project is made with xcode11 and swift5.
 Confirmed operation only on iOS13.
