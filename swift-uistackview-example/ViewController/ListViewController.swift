@@ -4,7 +4,15 @@ class ListViewController: UIViewController {
     
     var tweets = [Tweet]()
 
-    var tableView: UITableView!
+    lazy var tableView: UITableView = {
+        let table = UITableView(frame: view.bounds)
+        table.rowHeight = UITableView.automaticDimension
+        table.register(TweetCell.self, forCellReuseIdentifier: "TweetCell")
+        
+        table.delegate = self
+        table.dataSource = self
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +32,6 @@ class ListViewController: UIViewController {
     
     private func initializeView() {
         title = "List"
-        tableView = UITableView(frame: view.bounds)
-        tableView.rowHeight = UITableView.automaticDimension
-
-        tableView.register(TweetCell.self, forCellReuseIdentifier: "TweetCell")
-
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         view.addSubview(tableView)
     }
 }
